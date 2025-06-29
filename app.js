@@ -13,12 +13,16 @@ const app = express()
 
 // GLOBAL MIDDLEWARE
 // Implement CORS
+// app.options('*', cors())
+
 app.use(
   cors({
     origin: [
       'http://localhost:5173',
-      'https://igaming-frontend-rosy.vercel.app/login',
+      'https://igaming-frontend-rosy.vercel.app',
     ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 )
