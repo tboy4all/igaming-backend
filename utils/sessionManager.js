@@ -29,7 +29,7 @@ async function manageGameSessions() {
     const startTime = new Date()
     const endTime = new Date(startTime.getTime() + 20000) // 20 seconds ahead
 
-    const newSession = await GameSession.create({
+    await GameSession.create({
       startTime,
       endTime,
       active: true,
@@ -43,52 +43,6 @@ async function manageGameSessions() {
 }
 
 // Start interval loop
-setInterval(manageGameSessions, 5000)
+setInterval(manageGameSessions, 10000)
 
 module.exports = {}
-
-// const GameSession = require('../models/GameSession')
-// const User = require('../models/User')
-
-// async function manageGameSessions() {
-//   const now = new Date()
-
-//   // Expire current active session if it's overdue
-//   const currentSession = await GameSession.findOne({ active: true })
-
-//   if (currentSession && now >= currentSession.endTime) {
-//     const winningNumber = Math.floor(Math.random() * 10) + 1
-//     currentSession.winningNumber = winningNumber
-//     currentSession.active = false
-
-//     for (const player of currentSession.players) {
-//       if (player.guess === winningNumber) {
-//         player.isWinner = true
-//         await User.findByIdAndUpdate(player.userId, { $inc: { wins: 1 } })
-//       }
-//     }
-
-//     await currentSession.save()
-//     console.log(`🎉 Session ended. Winning number: ${winningNumber}`)
-//   }
-
-//   // Create new session if none active
-//   const existingActive = await GameSession.findOne({ active: true })
-//   if (!existingActive) {
-//     const startTime = new Date()
-//     const endTime = new Date(startTime.getTime() + 20000) // 20 seconds
-
-//     const newSession = await GameSession.create({
-//       startTime,
-//       endTime,
-//       active: true,
-//       players: [],
-//     })
-
-//     console.log(`🚀 New session started. Ends at: ${endTime.toISOString()}`)
-//   }
-// }
-
-// setInterval(manageGameSessions, 5000)
-
-// module.exports = {}

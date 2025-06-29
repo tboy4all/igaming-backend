@@ -15,7 +15,7 @@ const app = express()
 // Implement CORS
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://igaming-frontend.onrender.com'], // Add any frontend domains you use
+    origin: ['http://localhost:5173', 'https://igaming-frontend.onrender.com'],
     credentials: true,
   })
 )
