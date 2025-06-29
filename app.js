@@ -13,7 +13,12 @@ const app = express()
 
 // GLOBAL MIDDLEWARE
 // Implement CORS
-app.use(cors())
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'https://igaming-frontend.onrender.com'], // Add any frontend domains you use
+    credentials: true,
+  })
+)
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(helmet())
