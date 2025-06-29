@@ -15,7 +15,10 @@ const app = express()
 // Implement CORS
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://igaming-frontend.onrender.com'],
+    origin: [
+      'http://localhost:5173',
+      'https://igaming-frontend-rosy.vercel.app/login',
+    ],
     credentials: true,
   })
 )
