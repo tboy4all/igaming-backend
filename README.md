@@ -53,6 +53,17 @@ NODE_ENV=development
 You can copy `config.env.example` to `config.env` and fill in your own credentials.
 ```
 
+### 📬 API Endpoints
+
+All routes are prefixed with /api/v1
+
+- POST /api/v1/auth/register – Register a new user
+- POST /api/v1/auth/login – Login user and receive JWT
+- GET /api/v1/game/active-session – Get current session status
+- POST /api/v1/game/join – Join a session with a guess
+- GET /api/v1/game/last-result – Get result after session ends
+- GET /api/v1/game/leaderboard – Fetch top 10 players by wins
+
 ### 3. Run the App Locally
 
 After setting up your `config.env`, run:
