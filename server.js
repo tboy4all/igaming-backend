@@ -18,8 +18,12 @@ const DB = process.env.DATABASE.replace(
 const server = http.createServer(app)
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: [
+      'http://localhost:5173', // ✅ local dev
+      process.env.FRONTEND_URL, // ✅ production frontend
+    ],
     methods: ['GET', 'POST'],
+    credentials: true,
   },
 })
 
